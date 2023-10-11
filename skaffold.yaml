@@ -1,0 +1,25 @@
+apiVersion: skaffold/v4beta7
+kind: Config
+build:
+  artifacts:
+    - image: aleksihussa/client
+      context: client
+      sync:
+        manual:
+          - src: src/**/*.ts
+            dest: .
+      docker:
+        dockerfile: Dockerfile
+    - image: aleksihussa/server
+      context: server
+      sync:
+        manual:
+          - src: src/**/*.ts
+            dest: .
+      docker:
+        dockerfile: Dockerfile
+  local:
+    push: false
+manifests:
+  rawYaml:
+    - ./infra/*
