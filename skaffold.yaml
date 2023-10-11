@@ -3,7 +3,7 @@ kind: Config
 build:
   artifacts:
     - image: aleksihussa/client
-      context: client
+      context: frontend
       sync:
         manual:
           - src: src/**/*.ts
@@ -11,7 +11,7 @@ build:
       docker:
         dockerfile: Dockerfile
     - image: aleksihussa/server
-      context: server
+      context: backend
       sync:
         manual:
           - src: src/**/*.ts
