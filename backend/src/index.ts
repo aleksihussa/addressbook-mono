@@ -34,7 +34,9 @@ app.get(
         res.send({ coordinates })
     }
 )
-
+app.get('/api/*', (req: Request, res: Response): void => {
+    res.status(404).send('Notfound')
+})
 app.listen(PORT, (): void => {
     console.log('SERVER IS UP ON PORT:', PORT)
 })
