@@ -7,9 +7,6 @@ const app: Application = express()
 const PORT: number = 3001
 app.use(cors())
 
-app.get('/api/', (req: Request, res: Response): void => {
-    res.send('Hello world!')
-})
 app.get(
     '/api/coordinates',
     async (req: Request, res: Response): Promise<void> => {
@@ -35,7 +32,7 @@ app.get(
     }
 )
 app.get('/api/*', (req: Request, res: Response): void => {
-    res.status(404).send('Notfound')
+    res.status(404).send('Fell to the catcher route, endpoint not found')
 })
 app.listen(PORT, (): void => {
     console.log('SERVER IS UP ON PORT:', PORT)
