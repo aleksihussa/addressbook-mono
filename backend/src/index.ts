@@ -1,6 +1,6 @@
 import express, { Application, Request, Response } from 'express'
 import { Client } from '@googlemaps/google-maps-services-js'
-require('dotenv').config()
+import dotenv from 'dotenv'
 import cors from 'cors'
 const app: Application = express()
 
