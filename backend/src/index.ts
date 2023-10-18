@@ -2,10 +2,13 @@ import express, { Application, Request, Response } from 'express'
 import { Client } from '@googlemaps/google-maps-services-js'
 import dotenv from 'dotenv'
 import cors from 'cors'
+import mongoose from 'mongoose'
+import bodyParser from 'body-parser'
 const app: Application = express()
 
 const PORT: number = 3001
 app.use(cors())
+app.use(bodyParser.json())
 
 app.get(
     '/api/coordinates',
@@ -34,6 +37,17 @@ app.get(
 app.get('/api/*', (req: Request, res: Response): void => {
     res.status(404).send('Fell to the catcher route, endpoint not found')
 })
-app.listen(PORT, (): void => {
-    console.log('SERVER IS UP ON PORT:', PORT)
-})
+
+const start = async () => {
+    try {
+        await mongoose.connect('mongodb://mongo-srv:27017/')
+        console.log('success')
+    } catch (error) {
+        console.error(error)
+    }
+    app.listen(PORT, (): void => {
+        console.log('SERVER IS UP ON PORT:', PORT)
+    })
+}
+
+start()
