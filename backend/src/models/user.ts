@@ -1,6 +1,6 @@
 import mongoose from 'mongoose'
 
-import Contact from './contact'
+import { Contact } from './contact'
 
 // Define the schema for the user
 const userSchema = new mongoose.Schema({

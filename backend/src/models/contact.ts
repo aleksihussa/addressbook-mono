@@ -13,4 +13,4 @@ const ContactSchema: Schema = new Schema({
 })
 
 const Contact = mongoose.model<IContact>('Contact', ContactSchema)
-export default Contact
+export { Contact }
