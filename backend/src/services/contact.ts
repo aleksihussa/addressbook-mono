@@ -21,3 +21,12 @@ export const saveContactToUser = async ({
         throw new Error(`Error saving user: ${error.message}`)
     }
 }
+
+export const getContacts = async ({ phoneNumber }): Promise<any[]> => {
+    try {
+        const user = await User.findOne({ phoneNumber })
+        return user.contacts
+    } catch (error) {
+        throw new Error(`Error fetching contacts: ${error.message}`)
+    }
+}

@@ -4,6 +4,7 @@ import dotenv from 'dotenv'
 import cors from 'cors'
 import mongoose from 'mongoose'
 import bodyParser from 'body-parser'
+import { getContacts, saveContactToUser } from './services'
 const app: Application = express()
 
 const PORT: number = 3001
@@ -34,6 +35,28 @@ app.get(
         res.send({ coordinates })
     }
 )
+
+app.get('/api/contacts', async (req: Request, res: Response): Promise<void> => {
+    const phoneNumber = 'kjdsagkjsagjsa'
+
+    //TODO make logic that extracts the phone number from the bearer token which will be stored in the Authorization header
+
+    const contacts = await getContacts({ phoneNumber })
+
+    res.send({ contacts }).status(200)
+})
+
+app.post(
+    '/api/contacts',
+    async (req: Request, res: Response): Promise<void> => {
+        const contact = req.body
+
+        const result = await saveContactToUser(contact)
+
+        res.send({ result }).status(200)
+    }
+)
+
 app.get('/api/*', (req: Request, res: Response): void => {
     res.status(404).send('Fell to the catcher route, endpoint not found')
 })
