@@ -1,5 +1,5 @@
-import { Contact as ContactModel } from '../models'
-import User from '../models/user'
+import { Contact as ContactModel, User } from '../models'
+
 import { Contact } from '../types'
 
 export const saveContactToUser = async ({
