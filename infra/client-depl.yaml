@@ -8,8 +8,8 @@ spec:
   ports:
     - name: client
       protocol: TCP
-      port: 3000
-      targetPort: 3000
+      port: 5173
+      targetPort: 5173
 ---
 apiVersion: apps/v1
 kind: Deployment
