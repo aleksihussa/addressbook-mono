@@ -59,7 +59,7 @@ export const TopToolbar: React.FC<TopToolbarProps> = ({ isOpen = false }) => {
   };
 
   return (
-    <div className={styles.topbarContainer}>
+    <div className={styles.topbarContainer} data-testid="top_bar">
       <h1>Address book</h1>
       <Button
         className={styles.menuIconContainer}
