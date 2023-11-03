@@ -3,7 +3,7 @@ import { fireEvent, render, screen } from "@testing-library/react";
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 
-describe("App", () => {
+describe("Application's basic components", () => {
   it("renders without crashing", () => {
     render(
       <BrowserRouter>

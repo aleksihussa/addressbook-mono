@@ -32,6 +32,7 @@ const useTopbarStyles = createUseStyles({
     padding: "16px 16px",
     textDecoration: "none",
     display: "inline-grid",
+    alignItems: "center",
   },
 
   menuIconContainer: {
