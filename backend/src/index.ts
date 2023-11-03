@@ -4,7 +4,9 @@ import dotenv from 'dotenv'
 import cors from 'cors'
 import mongoose from 'mongoose'
 import bodyParser from 'body-parser'
+import jwt from 'jsonwebtoken'
 import { getContacts, saveContactToUser } from './services'
+import { getUserById } from './services/user'
 const app: Application = express()
 
 const PORT: number = 3001
@@ -57,6 +59,18 @@ app.post(
     }
 )
 
+app.post('/api/user/signIn', (req: Request, res: Response): void => {
+    const { userName, id } = req.body
+    //TODO somethong like this to return the user information retrieved and to store the auth header
+    req['Authorization'] = jwt.sign({ userName, id }, process.env.JWT_SECRET)
+    const user = getUserById(id)
+    res.status(200).send(user)
+})
+app.get('/api/user/signOut', (req: Request, res: Response): void => {
+    //TODO somethong like this to wipe the token from the client
+    req['Authorization'] = null
+    req.res.status(200)
+})
 app.get('/api/*', (req: Request, res: Response): void => {
     res.status(404).send('Fell to the catcher route, endpoint not found')
 })
