@@ -3,6 +3,7 @@ import { TopToolbar } from "../components/TopToolbar";
 import "../App.css";
 import React from "react";
 import { ContactProps } from "../components/Table/types";
+import { Helmet } from "react-helmet";
 
 export const Home = ({
   contacts,
@@ -11,10 +12,15 @@ export const Home = ({
   contacts: ContactProps[];
   setContacts: (contacts: ContactProps[]) => void;
 }) => (
-  <div className="App">
-    <TopToolbar />
-    <div className="content">
-      <ContactTable contacts={contacts} setContacts={setContacts} />
+  <>
+    <Helmet>
+      <title>Home</title>
+    </Helmet>
+    <div className="App">
+      <TopToolbar />
+      <div className="content">
+        <ContactTable contacts={contacts} setContacts={setContacts} />
+      </div>
     </div>
-  </div>
+  </>
 );
